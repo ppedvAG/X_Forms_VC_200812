@@ -6,7 +6,11 @@
              mc:Ignorable="d"
              x:Class="X_Forms.Layouts.AbsoluteLay">
     <ContentPage.Content>
-        <AbsoluteLayout>
+        <!--In einem AbsoluteLayout ist jedem Element eine absolute Position zugeordnet-->
+        <!--Diese wird durch die Property LayouBounds defniert. Die vier Zahlen repräsentieren X-Position, Y-Position, Breite, Höhe-->
+        <!--Die Property LayoutFlags definiert, welche der vier Zahlen in relativen Werten angegeben sind, anstatt in standartmäßigen
+            absoluten Werten-->
+         <AbsoluteLayout>
             <BoxView Color="Green"
                      AbsoluteLayout.LayoutBounds="50,150,20,100"
                      AbsoluteLayout.LayoutFlags="None"/>

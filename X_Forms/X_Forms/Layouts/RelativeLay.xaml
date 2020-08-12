@@ -6,6 +6,9 @@
              mc:Ignorable="d"
              x:Class="X_Forms.Layouts.RelativeLay">
     <ContentPage.Content>
+        <!--In RelativeLayouts ist jedem Element eine Position relativ zum umgebenden oder anderen UI-Elemente zugeordnet-->
+        <!--Den untenstehenden Constraint-Properties werden ConstraintExpressions zugeordnet, welche definieren, an welchem
+        anderen Objekt und welcher Property die Ralationen gemessen wird und um welchen Faktor und welche Konstante diese verändert wird-->
         <RelativeLayout>
             <BoxView Color="Green"
                      x:Name="BxV_Green"
