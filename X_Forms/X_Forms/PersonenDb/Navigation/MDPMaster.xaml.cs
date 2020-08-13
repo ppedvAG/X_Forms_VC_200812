@@ -6,13 +6,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using X_Forms.PersonenDb.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace X_Forms.Navigation.MasterDetail
+namespace X_Forms.PersonenDb.Navigation
 {
-    //Dieser CodeBehind wird automatisch durch das MasterDetailPage-Template generiert
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MDPMaster : ContentPage
     {
@@ -26,7 +25,6 @@ namespace X_Forms.Navigation.MasterDetail
             ListView = MenuItemsListView;
         }
 
-        //Im ViewModel der MasterPage werden die Menüitems defefiniert
         class MDPMasterViewModel : INotifyPropertyChanged
         {
             public ObservableCollection<MDPMasterMenuItem> MenuItems { get; set; }
@@ -35,12 +33,8 @@ namespace X_Forms.Navigation.MasterDetail
             {
                 MenuItems = new ObservableCollection<MDPMasterMenuItem>(new[]
                 {
-                    //Die Elemente vom Typ MasterMenuItem repräsentieren die einzelnen Menüeinträge. Der TargetType definiert die
-                    //Page-Klasse.
-                   new MDPMasterMenuItem(){Id=0, Title="Startseite", TargetType=typeof(MainPage)},
-                    new MDPMasterMenuItem(){Id=0, Title="AbsoluteLayout", TargetType=typeof(Layouts.AbsoluteLay)},
-                    new MDPMasterMenuItem(){Id=0, Title="RelativeLayout", TargetType=typeof(Layouts.RelativeLay)},
-                    new MDPMasterMenuItem(){Id=0, Title="PersonenDb", TargetType=typeof(PersonenDb.Navigation.MDP)}
+                    new MDPMasterMenuItem { Id = 0, Title = "Add new person", TargetType=typeof(PersonenDb_Add) },
+                    new MDPMasterMenuItem { Id = 1, Title = "List" , TargetType=typeof(PersonenDb_List)}
                 });
             }
 
