@@ -6,6 +6,7 @@ using X_Forms.PersonenDb.Service;
 
 namespace X_Forms.PersonenDb
 {
+    //Statische Klasse mit globalen Objekten (kann auch Service- und Controllerobjekte beinhalten)
     public static class StaticObjects
     {
         private static List<Person> personenListe;

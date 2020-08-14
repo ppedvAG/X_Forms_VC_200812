@@ -18,6 +18,7 @@ namespace X_Forms.PersonenDb.Pages
             //GUI-Initialisierung
             InitializeComponent();
 
+            //Zuweisung der lokalen Liste mit den Datenbank-Inhalten
             StaticObjects.PersonenListe = StaticObjects.PersonenDb.GetPeople();
 
             //Aktualisieren der GUI
@@ -37,9 +38,12 @@ namespace X_Forms.PersonenDb.Pages
             {
                 //Löschen aus lokaler Liste
                 StaticObjects.PersonenListe.Remove(p);
-
+                //Löschen aus Datenbank
                 StaticObjects.PersonenDb.DeletePerson(p);
             }
+
+            //Ausgabe eines Toasts
+            ToastController.ShowToastMessage($"{p.Vorname} {p.Nachname} wurde gelöscht.", ToastDuration.Long);
 
             //Aktualisieren der GUI
             RefreshPage();
@@ -55,15 +59,23 @@ namespace X_Forms.PersonenDb.Pages
             LstV_Liste.ItemsSource = StaticObjects.PersonenListe;
         }
 
+        //EventHandler zum Speichern der Liste (mittels Json)
         private void ToolbarItem_Save(object sender, EventArgs e)
         {
+            //Aufruf der Save-Methode des JsonControllers
             JsonController.Save(StaticObjects.PersonenListe);
+            //Ausgabe eines Toasts
+            ToastController.ShowToastMessage($"Liste gespeichert", ToastDuration.Long);
         }
 
+        //EventHandler zum Laden der Liste (mittels Json)
         private void ToolbarItem_Load(object sender, EventArgs e)
         {
+            //Neuzuweisung der lokalen Liste mit durch JsonController geladenen Datei
             StaticObjects.PersonenListe = JsonController.Load<List<Person>>();
-
+            //Ausgabe eines Toasts
+            ToastController.ShowToastMessage($"Liste geladen", ToastDuration.Long);
+            //Aktualisierung der GUI
             RefreshPage();
         }
     }

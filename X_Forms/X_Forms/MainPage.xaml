@@ -56,7 +56,8 @@
             <!--Grafische Ressourcen müssen in den einzelnen OS-Projekten abgelegt sein (z.B. Android/Resources/drawable)-->
             <ImageButton Source="test.png"
                         WidthRequest="50"/>
-
+            
+            <!--Die Placeholder-Property des Entries wird im Textfeld angezeigt, solange der Benutzer noch keinen Eintrag getätigt hat-->
             <Entry x:Name="Ent_Vorname" Placeholder="Vorname"/>
             <Entry x:Name="Ent_Nachname" Placeholder="Nachname"/>
             
@@ -76,7 +77,7 @@
                             <!--Innerhalb von ItemControls findet immer ein DataBinding an die Elemente der ItemSource statt (vgl. CodeBehind).
                             Dadurch finden Kurzbindungen an die Properties der Listenelemente statt.-->
                             <Label Text="{Binding}"/>
-
+                            <!--ContextActions werden angezeigt, wenn der Benutzer (unter Android) länger auf eine Objekt 'touched'-->
                             <ViewCell.ContextActions>
                                 <MenuItem Text="Löschen" Clicked="MenuItem_Clicked" CommandParameter="{Binding}"/>
                             </ViewCell.ContextActions>
@@ -113,6 +114,19 @@
                 <Button Text="Tab" Clicked="Button_Clicked_1"/>
                 <Button Text="Carousel" Clicked="Button_Clicked_2"/>
             </StackLayout>
+            
+            <!--Button zum Senden einer MC-Nachricht (vgl. CodeBehind und MC_SubscriberPage.cs)-->
+            <Button x:Name="Btn_MC"
+                    Text="Sende MC-Nachricht"
+                    Clicked="Btn_MC_Clicked"/>
+            
+            <!--Label zum Anzeigen des Batterie-Status mittels Xamarin.Essentials (vgl. CodeBehind)-->
+            <Label x:Name="Lbl_Battery"/>
+            
+            <!--Beispiele für lokalisierte Beschriftungen (vgl. CodeBehind sowie Resource.resx und Resource.de.resx)-->
+            <!--Mittels der x:Static-Bindung können Properties an resx-Files gebunden werden-->
+            <Label x:Name="Lbl_Localisation" Text="{x:Static local:Resource.String_Lbl}"/>
+            <Button x:Name="Btn_Localisation" Text="{x:Static local:Resource.String_Btn}"/>
 
         </StackLayout>
     </ScrollView>

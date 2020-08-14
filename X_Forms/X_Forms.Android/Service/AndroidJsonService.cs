@@ -14,6 +14,7 @@ using X_Forms.PersonenDb.Service;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
+//vgl. AndroidDatabaseService.cs
 [assembly: Dependency(typeof(X_Forms.Droid.Service.AndroidJsonService))]
 namespace X_Forms.Droid.Service
 {
