@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using X_Forms.Uebungen.GoogleBooks.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -40,5 +42,7 @@ namespace X_Forms
         {
             ((MainPage as Navigation.MasterDetail.MDP).Detail as NavigationPage).CurrentPage.DisplayAlert("Time", "Sleeping timespan: " + DateTime.Now.Subtract(TimeStamp).TotalSeconds, "Ok");
         }
+
+        public static ObservableCollection<Item> BookList { get; set; }
     }
 }

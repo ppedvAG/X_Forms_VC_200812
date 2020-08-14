@@ -37,10 +37,12 @@ namespace X_Forms.Navigation.MasterDetail
                 {
                     //Die Elemente vom Typ MasterMenuItem repräsentieren die einzelnen Menüeinträge. Der TargetType definiert die
                     //Page-Klasse.
-                   new MDPMasterMenuItem(){Id=0, Title="Startseite", TargetType=typeof(MainPage)},
-                    new MDPMasterMenuItem(){Id=0, Title="AbsoluteLayout", TargetType=typeof(Layouts.AbsoluteLay)},
-                    new MDPMasterMenuItem(){Id=0, Title="RelativeLayout", TargetType=typeof(Layouts.RelativeLay)},
-                    new MDPMasterMenuItem(){Id=0, Title="PersonenDb", TargetType=typeof(PersonenDb.Navigation.MDP)}
+                    new MDPMasterMenuItem(){Id=0, Title="Startseite", TargetType=typeof(MainPage)},
+                    new MDPMasterMenuItem(){Id=1, Title="AbsoluteLayout", TargetType=typeof(Layouts.AbsoluteLay)},
+                    new MDPMasterMenuItem(){Id=2, Title="RelativeLayout", TargetType=typeof(Layouts.RelativeLay)},
+                    new MDPMasterMenuItem(){Id=3, Title="PersonenDb", TargetType=typeof(PersonenDb.Navigation.MDP)},
+                    new MDPMasterMenuItem(){Id=4, Title="MVVM_Bsp", TargetType=typeof(BspMVVM.View.MainView)},
+                    new MDPMasterMenuItem(){Id=5, Title="GoogleBooks", TargetType=typeof(Uebungen.GoogleBooks.View.MainView)}
                 });
             }
 

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Views bezeichnen in MVVM die UIs. Diese sind über den BindingContext und entsprechende Kurzbindungen an ein ViewModel
+    gebunden, haben darüber hinaus aber keinerlei direkte Referenzen in andere Programmteile. Der CodeBehind ist mit Außnahme
+    des Konstruktors leer (vgl. CodeBehind).-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:X_Forms.BspMVVM.ViewModel"
+             mc:Ignorable="d"
+             x:Class="X_Forms.BspMVVM.View.MainView"
+             x:Name="Pg_Main">
+
+    <!--Setzen des BindingContextes aus das entsprechende ViewModel (vgl. ViewModel/MainViewModel.cs)-->
+    <!--Dem ViewModel können an dieser Stelle Property-Belegungen mitgegeben werden.-->
+    <ContentPage.BindingContext>
+        <vm:MainViewModel ContextPage="{x:Reference Pg_Main}"/>
+    </ContentPage.BindingContext>
+    
+    <StackLayout Padding="5"
+                 Spacing="5"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand">
+        <!--Die einzelnen Properties sind über Kurzbindungen an Properties des ViewModels angebunden-->
+        <Entry Text="{Binding NeuerName}" Placeholder="Name" Keyboard="Text" />
+        <Entry Text="{Binding NeuesAlter}" Placeholder="Alter" Keyboard="Numeric" />
+        <!--Events werden über die Command-Property per Kurzbindung an Commend-Objekte im ViewModel gebunden-->
+        <Button Text="Hinzufügen" Command="{Binding HinzufügenCmd}"/>
+        <ListView ItemsSource="{Binding PersonenListe}"
+                  IsPullToRefreshEnabled="True"
+                  IsRefreshing="{Binding IsRefreshing}"
+                  RefreshCommand="{Binding RefreshCmd}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Löschen" CommandParameter="{Binding}" Command="{Binding Source={x:Reference Pg_Main}, Path=BindingContext.LöschenCmd}"/>
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}"/>
+                            <Label Text="{Binding Alter}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
